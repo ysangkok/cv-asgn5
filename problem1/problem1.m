@@ -8,16 +8,19 @@ disp('(1) SEPARABLE');
 [features,labels] = load_data('../../data/separable.mat');
 
 % plot feature points with labels (using show_before)
-
+show_before(features,labels);
 
 % train SVM (using train_svm_separable)
-
+% UNCOMMENT when done
+%[w,b,sidx] = train_svm_separable(features,labels);
 
 % Show weights and bias on command window
-
+% UNCOMMENT
+%fprintf('weights = %d\nbiais = %d\n', w, b);
 
 % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
-
+% UNCOMMENT when done
+%show_after(features,labels,w,b,sidx);
 
 
 
@@ -39,13 +42,16 @@ C = 5;
 
 
 % train SVM (using train_svm_nonseparable)
-
+% UNCOMMENT when done
+%[w,b,sidx] = train_svm_nonseparable(features,labels,C);
 
 % Report weights and bias on command window
-
+% UNCOMMENT
+%fprintf('weights = %d\nbiais = %d\n', w, b);
 
 % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
-
+% UNCOMMENT
+%show_after(features,labels,w,b,sidx);
 
 
 
@@ -64,11 +70,14 @@ C = 5;
 
 
 % train SVM on training data (using train_svm_nonseparable)
-
+% UNCOMMENT
+%[w,b,sidx] = train_svm_nonseparable(train_features, train_labels,C);
 
 
 % predict classes for both training/testing sets (using predict_svm)
-
+% UNCOMMENT when done
+%predictions = predict_svm(train_features,w,b);
 
 
 % show errors of both training/testing set on command window
+% TODO
