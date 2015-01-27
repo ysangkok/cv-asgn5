@@ -32,7 +32,7 @@ disp('(2) SEPARABLE');
 
 
 % plot points with labels (using show_before)
-
+show_before(features,labels);
 
 % choose weight of C=5 to penalize deviations
 C = 5;

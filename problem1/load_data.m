@@ -12,7 +12,13 @@ function [features,labels] = load_data(fn)
 X = load(fn);
 
 features = X.features;
-labels = X.labels;
+for i=1:length(X.labels)
+   if (X.labels{i} == 'class_1')
+       labels(i) = 0;
+   else
+       labels(i) = 1;
+   end
+end
 
 % format check
 assert(size(features,1) == 2 && size(labels,1) == 1 && ...
