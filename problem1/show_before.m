@@ -7,8 +7,8 @@ function show_before(features,labels)
 %   labels      1xN vector that has entries 1/-1 for 'class_1'/'class_2', respectively
 %%
 figure('Name', 'Before')
-class1 = features(:,find(labels==1))
-class2 = features(:, find(labels==-1));
+class1 = features(:,find(labels==0))
+class2 = features(:, find(labels==1));
 scatter(class1(1, :), class1(2,:));
 hold
 scatter(class2(1, :), class2(2,:));

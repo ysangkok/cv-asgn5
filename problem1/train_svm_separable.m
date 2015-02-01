@@ -13,7 +13,8 @@ function [w,b,sidx] = train_svm_separable(features,labels)
 %%
 
 %% class_1 -> yi = 1  , class_2 -> yi = -1 
-y = labels;
+y(find(labels==0)) = -1;
+y(find(labels==1)) = 1;
 %%
 
 %% Optimizatision parameters
@@ -33,7 +34,7 @@ lb = zeros(N, 1);
 %%
 
 %% Use quadprog to solve the problem 
-alpha = quadprog(H,f,[],[],Aeq,beq,lb,[]);
+alpha = quadprog(H,f,[],[],Aeq,beq,lb,[])
 %%
 
 %% Tag the support vectors
@@ -50,6 +51,6 @@ end
 
 %% Determine b asmean of the different b you can obtain with the support vectors
 %svB = zeros([2 nbSV]);
-svB = w'*features(:,sidx) - y(sidx);
+svB = y(sidx) - w'*features(:,sidx);
 b = mean(svB);
 

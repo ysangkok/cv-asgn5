@@ -1,4 +1,4 @@
-function show_after(features,labels,w,b,svec)
+function show_after(features,labels,w,b,sidx)
 %% Shows a 2-dimensional plot of the features decision boundaries and margins.
 %  Also marks the support vectors.
 %
@@ -11,7 +11,30 @@ function show_after(features,labels,w,b,svec)
 %%
 %sp = linspace(0, length(w), 0.1);
 %plot(w' * sp + b);
-x = linspace(min(features(1,:)),max(features(1,:));
-y = w'*x+b;
+
+
+figure('Name', 'After')
+%% data
+class1 = features(:,find(labels==0));
+class2 = features(:, find(labels==1));
+scatter(class1(1, :), class1(2,:));
+hold on
+scatter(class2(1, :), class2(2,:));
+%%
+
+%% decision boundary
+x = linspace(min(features(1,:)),max(features(1,:)));
+vx = [x;  linspace(min(features(2,:)),max(features(2,:)))];
+% x =  0:pi/100:2*pi;
+% vx = [x; 0:pi/100:2*pi];
+y = w'*vx + b;
 scatter(x,y);
-%ezplot(@(x) w(2)/w(1) * x + b);
+%%
+
+%% support vectors
+sv =  features(:, sidx);
+scatter(sv(1, :), sv(2,:), [], 'k', '+');
+hold off;
+% min1 = min(features(1,:))
+% max1 = max(features(1,:))
+% ezplot(@(x) w(1)/w(2) * x + b, min1,max1);
