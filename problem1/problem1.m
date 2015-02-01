@@ -62,7 +62,7 @@ C = 5;
 
 
 % Load data from asgn4
-[train_features,train_labels,test_features,test_labels] = load_asgn4('../../data/asgn4data.mat');
+% [train_features,train_labels,test_features,test_labels] = load_asgn4('../../data/asgn4data.mat');
 
 
 % choose weight to penalize deviations
