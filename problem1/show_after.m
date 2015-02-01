@@ -9,3 +9,9 @@ function show_after(features,labels,w,b,svec)
 %   b           learned bias value
 %   sidx        vector containing the column indices of found support vectors in 'features'
 %%
+%sp = linspace(0, length(w), 0.1);
+%plot(w' * sp + b);
+x = linspace(min(features(1,:)),max(features(1,:));
+y = w'*x+b;
+scatter(x,y);
+%ezplot(@(x) w(2)/w(1) * x + b);
