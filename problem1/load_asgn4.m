@@ -11,12 +11,12 @@ function [train_features,train_labels,test_features,test_labels] = load_asgn4(fn
 %   test_features     DIMxN matrix where each column corresponds to a DIM dimensional feature
 %   test_labels       1xN vector that has entries 0/1 for respective classes
 %%
+data = load('../../data/asgn4data.mat');
+train_features = cell2mat(data.training.features);
+test_features  = cell2mat(data.testing.features);
 
-train_features =
-test_features  =
-
-train_labels   =
-test_labels    =
+train_labels   = data.training.inputs.labels;
+test_labels    = data.testing.inputs.labels;
 
 
 % format check
