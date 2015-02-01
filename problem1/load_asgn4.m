@@ -37,8 +37,5 @@ test_labels    = test.labels;
 
 
 % format check
-% assert(all(size(train_features(:)) == [DIM train.N]));
-% assert(all(size(test_features(:)) == [DIM test.N]));
-
 assert(min(train_features(:))>=0 & max(train_features(:))<=1);
 assert(min(test_features(:))>=0 & max(test_features(:))<=1);

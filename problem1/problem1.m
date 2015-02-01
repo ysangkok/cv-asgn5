@@ -1,53 +1,53 @@
 
-%------------------------------------------------------------------
-% SEPARABLE CASE
-%------------------------------------------------------------------
-disp('---------');
-disp('(1) SEPARABLE');
-
-% load training data (separable)
-[features,labels] = load_data('../../data/separable.mat');
-
-% plot feature points with labels (using show_before)
-%%show_before(features,labels);
-
-% train SVM (using train_svm_separable)
-[w,b,sidx] = train_svm_separable(features,labels);
-
-% Show weights and bias on command window
-fprintf('weights = [%d; %d] \nbiais = %d\n', w, b);
-
-% Plot points with labels, decision boundaries, margins, support vectors (using show_after)
-%%show_after(features,labels,w,b,sidx);
-
-
-
-%------------------------------------------------------------------
-% NON-SEPARABLE CASE
-%------------------------------------------------------------------
-disp('---------');
-disp('(2) SEPARABLE');
-disp('nonseparable.mat');
-
-% load training data (nonseparable)
-[features,labels] = load_data('../../data/nonseparable.mat');
-
-
-% plot points with labels (using show_before)
-%% show_before(features,labels);
-
-% choose weight of C=5 to penalize deviations
-C = 5;
-
-
-% train SVM (using train_svm_nonseparable)
-[w,b,sidx] = train_svm_nonseparable(features,labels,C);
-
-% Report weights and bias on command window
-fprintf('weights = [%d; %d] \nbiais = %d\n', w, b);
-
-% Plot points with labels, decision boundaries, margins, support vectors (using show_after)
-%% show_after(features,labels,w,b,sidx);
+% %------------------------------------------------------------------
+% % SEPARABLE CASE
+% %------------------------------------------------------------------
+% disp('---------');
+% disp('(1) SEPARABLE');
+% 
+% % load training data (separable)
+% [features,labels] = load_data('../../data/separable.mat');
+% 
+% % plot feature points with labels (using show_before)
+% %%show_before(features,labels);
+% 
+% % train SVM (using train_svm_separable)
+% [w,b,sidx] = train_svm_separable(features,labels);
+% 
+% % Show weights and bias on command window
+% fprintf('weights = [%d; %d] \nbiais = %d\n', w, b);
+% 
+% % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
+% %%show_after(features,labels,w,b,sidx);
+% 
+% 
+% 
+% %------------------------------------------------------------------
+% % NON-SEPARABLE CASE
+% %------------------------------------------------------------------
+% disp('---------');
+% disp('(2) SEPARABLE');
+% disp('nonseparable.mat');
+% 
+% % load training data (nonseparable)
+% [features,labels] = load_data('../../data/nonseparable.mat');
+% 
+% 
+% % plot points with labels (using show_before)
+% %% show_before(features,labels);
+% 
+% % choose weight of C=5 to penalize deviations
+% C = 5;
+% 
+% 
+% % train SVM (using train_svm_nonseparable)
+% [w,b,sidx] = train_svm_nonseparable(features,labels,C);
+% 
+% % Report weights and bias on command window
+% fprintf('weights = [%d; %d] \nbiais = %d\n', w, b);
+% 
+% % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
+% %% show_after(features,labels,w,b,sidx);
 
 
 
@@ -72,8 +72,18 @@ C = 5; % try different ones
 
 
 % predict classes for both training/testing sets (using predict_svm)
-predictions = predict_svm(train_features,w,b);
-
+%train_predictions = predict_svm(train_features,w,b);
+%test_predictions = predict_svm(test_features,w,b);
 
 % show errors of both training/testing set on command window
-% TODO
+figure('Name', 'Errors of training set : blue==expected, black==predicted')
+x = 1:size(train_features,2)
+scatter(x, train_labels, 'b');
+% hold
+% scatter(x, train_predictions, 'k');
+
+figure('Name', 'Errors of testing set : blue==expected, black==predicted')
+x = 1:size(test_features,2)
+scatter(x, test_labels, 'b');
+% hold
+% scatter(x, test_predictions, 'k');
