@@ -38,7 +38,7 @@ alpha = quadprog(H,f,[],[],Aeq,beq,lb,[]);
 
 %% Tag the support vectors
 epsilon = 1e-5; %eps
-sidx = find(alpha>epsilon)
+sidx = find(alpha>epsilon);
 %%
 
 %% Calculate w with the alphai

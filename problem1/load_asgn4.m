@@ -15,16 +15,12 @@ data = load('../../data/asgn4data.mat');
 
 [DIM train.N] = size(data.training.histogram);
 train.scaling = repmat(sum(data.training.histogram, 1), DIM, 1);
-%size(train.scaling)
-%size(data.training.histogram)
 train.newFeatures = data.training.histogram ./ train.scaling;
 train.labels = data.training.inputs.labels;
 
 
 test.N = size(data.training.histogram, 2);
 test.scaling = repmat(sum(data.testing.histogram, 1), DIM, 1);
-size(test.scaling)
-size(data.testing.histogram)
 test.newFeatures = data.testing.histogram ./ test.scaling;
 test.labels = data.testing.inputs.labels;
 
