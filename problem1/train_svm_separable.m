@@ -38,7 +38,7 @@ alpha = quadprog(H,f,[],[],Aeq,beq,lb,[])
 %%
 
 %% Tag the support vectors
-epsilon = 1e-7; %eps
+epsilon = 1e-5; %eps
 sidx = find(alpha>epsilon)
 %%
 
@@ -51,6 +51,6 @@ end
 
 %% Determine b asmean of the different b you can obtain with the support vectors
 %svB = zeros([2 nbSV]);
-svB = y(sidx) - w'*features(:,sidx);
+svB = y(sidx) - w'*features(:,sidx)
 b = mean(svB);
 
