@@ -23,12 +23,13 @@ scatter(class2(1, :), class2(2,:));
 %% decision boundary
 x = linspace(0,max(features(1,:))); %linspace(min(features(1,:)),max(features(1,:)));
 vx = [x;  linspace(0,max(features(2,:)))]; %[x;  linspace(min(features(2,:)),max(features(2,:)))];
-y = x'*(w(1)/-w(2))-(-b/norm(w))-1;
+y = x'*(w(1)/-w(2))-(-b/norm(w))-1; % upper line 
 
 % for i=1:size(vx, 2)
 %     y(i) = dot(w,vx(:,i)) + b;
 % end
-scatter(x,y, [], 'k', '.');
+boundary = y; % here we actually want the decision boundary line
+scatter(x,y, [], 'k', '.'); % decision boundary line
 %%
 
 %% support vectors
@@ -37,8 +38,8 @@ scatter(sv(1, :), sv(2,:), [], 'k', '+');
 %%
 
 %% line showing the margin
-scatter(x,y+1, [], 'b', '.');
-scatter(x,y-1, [], 'm', '.');
+scatter(x,boundary-(1/norm(w)), [], 'b', '.'); % upper line
+scatter(x,boundary+(1/norm(w)), [], 'm', '.'); % lower line
 %%
 
 hold off;
