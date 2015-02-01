@@ -6,7 +6,7 @@ function [features,labels] = load_data(fn)
 %
 % OUTPUTS
 %   features    2xN matrix where each column corresponds to a 2D point as in [x;y]
-%   labels      1xN vector that has entries 0/1 for 'class_1'/'class_2', respectively
+%   labels      1xN vector that has entries 1/-1 for 'class_1'/'class_2', respectively
 %%
 
 X = load(fn);
@@ -14,9 +14,9 @@ X = load(fn);
 features = X.features;
 for i=1:length(X.labels)
    if (X.labels{i} == 'class_1')
-       labels(i) = 0;
-   else
        labels(i) = 1;
+   else
+       labels(i) = -1;
    end
 end
 

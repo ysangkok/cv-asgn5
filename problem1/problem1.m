@@ -8,7 +8,7 @@ disp('(1) SEPARABLE');
 [features,labels] = load_data('../../data/separable.mat');
 
 % plot feature points with labels (using show_before)
-show_before(features,labels);
+% show_before(features,labels);
 
 % train SVM (using train_svm_separable)
 % UNCOMMENT when done
@@ -16,11 +16,11 @@ show_before(features,labels);
 
 % Show weights and bias on command window
 % UNCOMMENT
-%fprintf('weights = %d\nbiais = %d\n', w, b);
+fprintf('weights = %d\nbiais = %d\n', w, b);
 
 % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
 % UNCOMMENT when done
-%show_after(features,labels,w,b,sidx);
+% show_after(features,labels,w,b,sidx);
 
 
 
@@ -31,11 +31,11 @@ disp('(2) SEPARABLE');
 
 
 % load training data (nonseparable)
-[features,labels] = load_data('../../data/nonseparable.mat');
+% [features,labels] = load_data('../../data/nonseparable.mat');
 
 
 % plot points with labels (using show_before)
-show_before(features,labels);
+% show_before(features,labels);
 
 % choose weight of C=5 to penalize deviations
 C = 5;
