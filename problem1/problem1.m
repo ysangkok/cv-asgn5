@@ -12,7 +12,7 @@ show_before(features,labels);
 
 % train SVM (using train_svm_separable)
 % UNCOMMENT when done
-%[w,b,sidx] = train_svm_separable(features,labels);
+[w,b,sidx] = train_svm_separable(features,labels);
 
 % Show weights and bias on command window
 % UNCOMMENT
