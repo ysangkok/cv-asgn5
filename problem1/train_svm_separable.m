@@ -24,7 +24,6 @@ for i=1:N
         H(i,j) = y(i)*y(j)*features(:,i)'*features(:,j);
     end    
 end
-size(H)
 f = repmat(-1, 1, N);
 
 Aeq = y;
@@ -34,7 +33,7 @@ lb = zeros(N, 1);
 %%
 
 %% Use quadprog to solve the problem 
-alpha = quadprog(H,f,[],[],Aeq,beq,lb,[])
+alpha = quadprog(H,f,[],[],Aeq,beq,lb,[]);
 %%
 
 %% Tag the support vectors
@@ -51,6 +50,6 @@ end
 
 %% Determine b asmean of the different b you can obtain with the support vectors
 %svB = zeros([2 nbSV]);
-svB = y(sidx) - w'*features(:,sidx)
+svB = y(sidx) - w'*features(:,sidx);
 b = mean(svB);
 

@@ -2,13 +2,14 @@
 %------------------------------------------------------------------
 % SEPARABLE CASE
 %------------------------------------------------------------------
+disp('---------');
 disp('(1) SEPARABLE');
 
 % load training data (separable)
 [features,labels] = load_data('../../data/separable.mat');
 
 % plot feature points with labels (using show_before)
-show_before(features,labels);
+%%show_before(features,labels);
 
 % train SVM (using train_svm_separable)
 [w,b,sidx] = train_svm_separable(features,labels);
@@ -17,22 +18,23 @@ show_before(features,labels);
 fprintf('weights = [%d; %d] \nbiais = %d\n', w, b);
 
 % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
-show_after(features,labels,w,b,sidx);
+%%show_after(features,labels,w,b,sidx);
 
 
 
 %------------------------------------------------------------------
 % NON-SEPARABLE CASE
 %------------------------------------------------------------------
+disp('---------');
 disp('(2) SEPARABLE');
-
+disp('nonseparable.mat');
 
 % load training data (nonseparable)
 [features,labels] = load_data('../../data/nonseparable.mat');
 
 
 % plot points with labels (using show_before)
-% show_before(features,labels);
+%% show_before(features,labels);
 
 % choose weight of C=5 to penalize deviations
 C = 5;
@@ -45,7 +47,7 @@ C = 5;
 fprintf('weights = [%d; %d] \nbiais = %d\n', w, b);
 
 % Plot points with labels, decision boundaries, margins, support vectors (using show_after)
-show_after(features,labels,w,b,sidx);
+%% show_after(features,labels,w,b,sidx);
 
 
 
@@ -53,7 +55,9 @@ show_after(features,labels,w,b,sidx);
 %--------------------------------------------------------------------
 % APPLY SVM to airplane/motorbike classification of assignment 4
 %--------------------------------------------------------------------
-
+disp('---------');
+disp('(2) SEPARABLE');
+disp('asgn4data.mat');
 
 % Load data from asgn4
 [train_features,train_labels,test_features,test_labels] = load_asgn4('../../data/asgn4data.mat');
@@ -68,8 +72,7 @@ C = 5; % try different ones
 
 
 % predict classes for both training/testing sets (using predict_svm)
-% UNCOMMENT when done
-%predictions = predict_svm(train_features,w,b);
+predictions = predict_svm(train_features,w,b);
 
 
 % show errors of both training/testing set on command window
