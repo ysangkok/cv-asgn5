@@ -23,7 +23,8 @@ scatter(class2(1, :), class2(2,:));
 %% decision boundary
 x = linspace(0,max(features(1,:))); %linspace(min(features(1,:)),max(features(1,:)));
 vx = [x;  linspace(0,max(features(2,:)))]; %[x;  linspace(min(features(2,:)),max(features(2,:)))];
-y = w'*vx + b ;
+y = x'*(w(1)/-w(2))-(-b/norm(w))-1;
+
 % for i=1:size(vx, 2)
 %     y(i) = dot(w,vx(:,i)) + b;
 % end
