@@ -9,6 +9,6 @@ function show_before(features,labels)
 figure('Name', 'Before')
 class1 = features(:,find(labels==0));
 class2 = features(:, find(labels==1));
-scatter(class1(1, :), class1(2,:));
+scatter(class1(1, :), class1(2,:), '+');
 hold
-scatter(class2(1, :), class2(2,:));
+scatter(class2(1, :), class2(2,:), '+');

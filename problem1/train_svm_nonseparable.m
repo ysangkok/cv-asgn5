@@ -38,7 +38,7 @@ alpha = quadprog(H,f,[],[],Aeq,beq,lb,ub);
 %%
 
 %% Tag the support vectors
-epsilon = 1e-5; %eps
+epsilon = 1e-7; %eps
 sidx = find( (alpha>epsilon) & (alpha< (C-epsilon)) );
 %%
 

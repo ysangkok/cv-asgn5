@@ -15,51 +15,29 @@ figure('Name', 'After')
 %% data
 class1 = features(:,find(labels==0));
 class2 = features(:, find(labels==1));
-scatter(class1(1, :), class1(2,:));
+scatter(class1(1, :), class1(2,:), '+');
 hold on
-scatter(class2(1, :), class2(2,:));
+scatter(class2(1, :), class2(2,:), '+');
 %%
-
-%% decision boundary
-x = linspace(0,max(features(1,:))); %linspace(min(features(1,:)),max(features(1,:)));
-%vx = [x;  linspace(0,max(features(2,:)))]; %[x;  linspace(min(features(2,:)),max(features(2,:)))];
-f = @(x) x*(w(1)/-w(2))-(-b/norm(w))-1;
-y = f(x'); % upper line 
-
-
-% for i=1:size(vx, 2)
-%     y(i) = dot(w,vx(:,i)) + b;
-% end
-%boundary = y; % here we actually want the decision boundary line
-%%
-
-%% support vectors
-sv =  features(:, sidx)
-idxs = find(labels(sidx)==1)
-%assert(length(idxs) > 10);
-lowersvs = features(:,sidx(idxs))
-
-lower_line_point = sum(lowersvs,2) ./ repmat(size(lowersvs,2),size(lowersvs,2),1)
-assert(all(size(lower_line_point) == [2 1]));
-upper_line_point = [lower_line_point(1); f(lower_line_point(1))]
-assert(all(size(upper_line_point) == [2 1]));
-
-%scatter(lower_line_point(1),lower_line_point(2),'fill');
-%scatter(upper_line_point(1),upper_line_point(2),'fill','green');
-
-x_diff = abs(upper_line_point(2) - lower_line_point(2))
-assert(x_diff > eps)
-boundary = y-x_diff/2;
-%scatter(x,y-x_diff, 'green', 'd');
-
-scatter(x,boundary, [], 'k', '.'); % decision boundary line
-
-scatter(sv(1, :), sv(2,:), [], 'k', '+');
-%%
-
-%% line showing the margin
-scatter(x,boundary-(1/norm(w)), [], 'b', '.'); % upper line
-scatter(x,boundary+(1/norm(w)), [], 'm', '.'); % lower line
-%%
+if (w(2) ~= 0 )
+    %% decision boundary in red .
+    x = linspace(min(features(1,:)),max(features(1,:)));
+    f = @(x) x*(-w(1)/w(2)) - (b/w(2));
+    boundary = f(x); % boundary line
+    scatter(x,boundary, [], 'r', '.'); % decision boundary line
+    
+    
+    %% support vectors in black o
+    sv = features(:, sidx);
+    scatter(sv(1, :), sv(2,:), [], 'k');
+    %%
+    
+    %% line showing the margin
+    scatter(x,boundary+(1/w(2)), [], 'g', '.');
+    scatter(x,boundary-(1/w(2)), [], 'g', '.');
+    %%
+else
+    disp('w(2) == 0');
+end
 
 hold off;
